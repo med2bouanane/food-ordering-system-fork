@@ -1,0 +1,16 @@
+version: '3.7'
+services:
+  postgres-food-system:
+    image: postgres:latest
+    container_name: postgres-food-system
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: admin
+    volumes:
+      - v-pg-food-system:/var/lib/postgresql/data
+      - ./pg/init-scripts/:/docker-entrypoint-initdb.d/
+
+volumes:
+  v-pg-food-system:
